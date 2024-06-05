@@ -8,25 +8,46 @@
 <body>
     <h1>Stream Content</h1>
     <div id="content"></div>
-
+    
     <script>
-        // Replace 'https://your-username.github.io/repo-name/streams.json' with the actual path to your JSON file on GitHub Pages
-        const url = 'https://livecrichdstream.pages.dev/streams.json';
+        const allowedIP = '106.194.3.152';
 
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const contentDiv = document.getElementById('content');
-                contentDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
+        // Function to get the client's IP address
+        async function getClientIP() {
+            try {
+                const response = await fetch('https://livecrichdstream.pages.dev/streams.json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.error('Error fetching IP address:', error);
+                return null;
+            }
+        }
+
+        // Fetch the JSON data if the client's IP is allowed
+        async function fetchJSON() {
+            const clientIP = await getClientIP();
+            if (clientIP === allowedIP) {
+                fetch('streams.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const contentDiv = document.getElementById('content');
+                        contentDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    })
+                    .catch(error => {
+                        console.error('There has been a problem with your fetch operation:', error);
+                    });
+            } else {
+                document.getElementById('content').innerHTML = 'Access denied: Your IP address is not allowed.';
+            }
+        }
+
+        fetchJSON();
     </script>
 </body>
 </html>
