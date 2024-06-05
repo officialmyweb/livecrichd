@@ -1,0 +1,17 @@
+{
+    "USANETWORK": {
+        "url": "//fsly.stream.peacocktv.com/Content/CMAF_OL1-CTR-4s/Live/channel(usa-east)/master.mpd",
+        "k1": "882c9f5613b43b47adc70aa968a308ce",
+        "k2": "de534ef8914bfe62ba3cdd6bdb9e1c04"
+    },
+    "USANETWORK_WEST": {
+        "url": "https://fsly.stream.peacocktv.com/Content/CMAF_OL1-CTR-4s/Live/channel(usa-west)/master.mpd",
+        "k1": "252a671825ba31ec8433f978c32ccf6d",
+        "k2": "ee560759ecc8d2274df2e63fcef56915"
+    },
+    "GO3-SPORT3-LITHUANIA": {
+        "url": "https://cdnlb.tvplayhome.lt/live/eds/TV3_Sport_HD_HVC/GO3_LIVE_DASH_AVC/TV3_Sport_HD_HVC.mpd",
+        "k1": "610ad79e26a84fc782c987455e21a86b",
+        "k2": "d2d4acc6e79447b55f3f5c0267af06f5"
+    }
+}
