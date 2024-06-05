@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Access</title>
+</head>
+<body>
+    <h1>Stream Content</h1>
+    <div id="content"></div>
+
+    <script>
+        // Replace 'https://your-username.github.io/repo-name/streams.json' with the actual path to your JSON file on GitHub Pages
+        const url = 'https://livecrichdstream.pages.dev/streams.json';
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const contentDiv = document.getElementById('content');
+                contentDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    </script>
+</body>
+</html>
